@@ -14,18 +14,15 @@
 				<h1 class="mb-3">To Do List</h1>
 				<!--Search Function-->
 					<form class="search"> 
-						<input type="text" class="form-control" name="search" placeholder="Search for your To-Dos">
+						<input type="text" class="form-control" name="search" placeholder="Search for your To-Dos" onsubmit="returnsFalse()">
 					</form>
 			</header>
 		<!--To-Dos-->
-			<button type="button" class="collapsible"><h5 class="text-light">Incomplete</h3></button>
+			<button type="button" class="collapsible"><h5 class="text-light d-inline">Incomplete</h3></button>
 			<ul class="list-group todos text-light content"> 
-				<li class="list-group-item d-flex justify-content-between align-items-center mb-1">
-				<span class="span">test</span>
-				<i class="far fa-trash-alt delete"></i>
-				</li>
 			</ul>
-			<button type="button" class="collapsible"><h5 class="text-light">Completed</h3></button>
+
+			<button type="button" class="collapsible d-inline"><h5 class="text-light d-inline">Completed</h3></button>
 			<ul class="list-group finishedtodos text-light content"> 
 			</ul>
 		<!--Adding To-Dos-->

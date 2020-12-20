@@ -3,6 +3,7 @@ const toDoList = document.querySelector(".todos");
 const finishedToDos = document.querySelector(".finishedtodos");
 const searchBar = document.querySelector(".search input");
 const coll = document.getElementsByClassName("collapsible");
+const searchBarContainer = document.querySelector(".search");
 // Function used to create a to do 
 const createToDo = value => {
 	const htmlTemplate = `
@@ -23,15 +24,25 @@ const addRemoveToDoHtml = innerHtml => {
 }
 
 const filterToDos = search => {
-
 	let incompleteTasks = Array.from(toDoList.children);
 	let completedTasks = Array.from(finishedToDos.children);
 	let tasks = incompleteTasks.concat(completedTasks);
 
+	tasks
+	.filter( task => {
+		return !task.textContent.toLowerCase().includes(search);
+	})
+	.forEach(task => task.classList.add("filtered"));
 	
-	tasks.filter(_ => {
+	tasks
+	.filter( task => {
+		return task.textContent.toLowerCase().includes(search);
+	})
+	.forEach(task => task.classList.remove("filtered"));
+};
 
-	});
+const returnsFalse = () => {
+	return false;
 };
 
 /* This piece of code creates a new to do based off the HTML template and the user sumbitted value
@@ -48,7 +59,7 @@ addButton.addEventListener("submit", event => {
 	
 });
 
-// delete todos
+// Deleting to dos if the trash button is clicked and moving tasks to complete if the text is clicked
 toDoList.addEventListener("click", event => {
 	
 	if (event.target.classList.contains("delete")) {
@@ -65,6 +76,7 @@ toDoList.addEventListener("click", event => {
 	} 
 });
 
+// Deleting to dos if the trash button is clicked and moving tasks back to incomplete if the text is clicked
 finishedToDos.addEventListener("click", event => {
 	if (event.target.classList.contains("delete")) {
 		event.target.parentElement.remove();
@@ -76,12 +88,16 @@ finishedToDos.addEventListener("click", event => {
 	}
 });
 
-searchBar.addEventListener("keyup", _ => {
-	const searchTerm = searchBar.value.trim();
+// Calling the search function when the user presses a key
+searchBar.addEventListener("keyup", () => {
+	const searchTerm = searchBar.value.trim().toLowerCase();
 	filterToDos(searchTerm);
 });
 
-//collapsible functionality
+searchBarContainer.addEventListener("submit", e => {
+	e.preventDefault();
+});
+//Creating collapsibility by adding and removing d:none with a button press
 
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -91,6 +107,6 @@ for (let i = 0; i < coll.length; i++) {
       content.style.display = "none";
     } else {
       content.style.display = "block";
-    }
+	  } 
   });
 }
