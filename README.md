@@ -3,8 +3,4 @@ As you can see in the following code files, I have created a to-do list both to 
 to explore common dom methods and functions) and to gain an insight into the programming process (How do people come up with features to respond to such a common need, and how are they implemented).
 
 Here are some images of the final product(If you can't see these, check the images folder):
-
-[file](./images/img1)
-[file](./images/img2)
-[file](./images/img3)
-[file](./images/img4)
+https://github.com/Akshat-Gup/ToDoList/issues/1#issue-771561884
